@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\HaberPortalı.UI.props" />
+</Project>

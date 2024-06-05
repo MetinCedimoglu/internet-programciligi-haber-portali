@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HaberPortalı", "HaberPortalı\HaberPortalı.csproj", "{DD098BFD-0C91-40A9-A669-316BF6B5B206}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaberPortalı.UI", "HaberPortalı.UI\HaberPortalı.UI.csproj", "{1526DD1E-1536-4DAA-B2E9-33359CE32048}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD098BFD-0C91-40A9-A669-316BF6B5B206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD098BFD-0C91-40A9-A669-316BF6B5B206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD098BFD-0C91-40A9-A669-316BF6B5B206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD098BFD-0C91-40A9-A669-316BF6B5B206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1526DD1E-1536-4DAA-B2E9-33359CE32048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1526DD1E-1536-4DAA-B2E9-33359CE32048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1526DD1E-1536-4DAA-B2E9-33359CE32048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1526DD1E-1536-4DAA-B2E9-33359CE32048}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA329015-8B4B-43FE-9FD4-D818A45DF0FB}
+	EndGlobalSection
+EndGlobal

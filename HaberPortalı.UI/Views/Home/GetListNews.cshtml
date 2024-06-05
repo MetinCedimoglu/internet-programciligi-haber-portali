@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewData["Title"] = "GetListNews";
+}
+
+<h1>Haberler</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div id="progress">
+        <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="tbNewsList">
+            <thead>
+                <tr>
+                    
+                    
+                    
+                    <th>Id</th> 
+                    <th>Başlık</th> 
+                    <th>İçaerik</th> 
+                    <th>Durumu</th>
+
+                    <th>Kayıt T.</th>
+                    <th>Düzenleme T.</th>
+                    
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+        
+
+    </div>
+    
+
+    @section Scripts{
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        var ApiBaseUrl = "@ViewBag.ApiBaseUrl";
+                        var catId = "@ViewBag.CatId";
+                        NewsList();
+                        CategoriList();
+                        CategoryById();
+                        $("#btnEdit").hide();
+                        $("#editHeader").html("");
+                        $("#questioncard").hide();
+                        $("#btnDelete").hide();
+
+
+                        function CategoriList() {
+                            $.ajax({
+                                url: ApiBaseUrl + "Categories",
+                                method: "GET",
+                                contentType: "application/json",
+                                success: function (data) {
+                                    var opt = "";
+                                    $("#cbCategory").empty();
+                                    $.each(data, function (i, item) {
+
+                                        if (catId == item.id) {
+                                            opt = '<option value="' + item.id + '" selected>' + item.name + '</option>';
+                                        } else {
+                                            opt = '<option value="' + item.id + '">' + item.name + '</option>';
+                                        }
+
+                                        $("#cbCategory").append(opt);
+                                    });
+
+                                },
+                                error: function () { }
+                            });
+                        }
+                        function CategoryById() {
+                            $.ajax({
+                                url: ApiBaseUrl + "Categories/" + catId,
+                                method: "GET",
+                                contentType: "application/json",
+                                success: function (data) {
+                                    $("#catName").html("<b>" + data.name + "<b>");
+                                },
+                                error: function () { }
+                            });
+                        }
+                        function NewsList() {
+                            $.ajax({
+                                url: ApiBaseUrl + "News",
+                                method: "GET",
+                                headers: {
+                                    "Authorization": "Bearer " + token
+                                },
+                                contentType: "application/json",
+                                success: function (data) {
+                                    NewsListToTable(data);
+                                },
+                                error: function () { }
+                            });
+                        }
+                        function NewsListToTable(data) {
+                            $("#tbNewsList tbody").empty();
+                            var tr = '';
+                            $.each(data, function (i, item) {
+                                var bg = item.isActive ? 'bg-success' : 'bg-danger';
+
+                    tr += '<tr><td>' + item.id + '</td><td>' + item.title + '</td><td>' + item.content + '</td><td><span class="badge ' + bg + '">' + (item.isActive ? 'Aktif' : 'Pasif') + '</span></td><td>' + FormatDate(item.created) + '</td><td>' + FormatDate(item.updated) + '</td>'
+
+                                
+
+                                tr += '</tr>';
+                            });
+
+                            $("#tbNewsList tbody").append(tr);
+                        }
+                        function FormatDate(d) {
+                            var date = new Date(d);
+                            var day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+                            var mount = date.getMonth() > 9 ? date.getMonth() : '0' + date.getMonth();
+                            var year = date.getFullYear();
+
+                            var hour = date.getHours() > 9 ? date.getHours() : '0' + date.getHours();
+                            var minute = date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes();
+                            var second = date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds();
+
+                            var fd = day + "." + mount + "." + year + " " + hour + ":" + minute + ":" + second;
+                            return fd
+                        }
+
+
+
+                    });
+
+                        
+
+                </script>
+
+}
